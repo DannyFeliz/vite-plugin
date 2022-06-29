@@ -54,10 +54,6 @@ export default function laravel(config: string|string[]|PluginConfig): LaravelPl
     let resolvedConfig: ResolvedConfig
     const cssManifest: Manifest = {}
 
-    const defaultAliases: Record<string, string> = {
-        '@': '/resources/js',
-    };
-
     return {
         name: 'laravel',
         enforce: 'post',
@@ -65,6 +61,9 @@ export default function laravel(config: string|string[]|PluginConfig): LaravelPl
             const ssr = !! userConfig.build?.ssr
             const env = loadEnv(mode, userConfig.envDir || process.cwd(), '')
             const assetUrl = env.ASSET_URL ?? ''
+            const defaultAliases: Record<string, string> = {
+                '@': path.resolve(userConfig.root ?? process.cwd(), 'resources/js'),
+            }
 
             return {
                 base: command === 'build' ? resolveBase(pluginConfig, assetUrl) : '',
