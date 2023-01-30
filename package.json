@@ -36,7 +36,7 @@
         "picocolors": "^1.0.0",
         "typescript": "^4.6.4",
         "vite": "^2.9.6",
-        "vitest": "^0.22.0",
+        "vitest": "^0.28.3",
         "vue-tsc": "^0.40.1",
         "lint-staged": "^12.4.3"
     },
